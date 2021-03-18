@@ -2,6 +2,8 @@
 
 namespace App\Policies;
 
+use App\User;
+use App\Task;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TaskPolicy
@@ -22,11 +24,5 @@ class TaskPolicy
     {
         return $user->id === $task->user_id;
     }
-
-    public function destroy(Request $request, Task $task)
-    {
-        $this->authorize('destroy', $task);
-
-        // Delete The Task...
-    }
+    
 }

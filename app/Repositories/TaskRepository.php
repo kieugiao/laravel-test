@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\User;
+use App\Task;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TaskRepository
 {
@@ -17,5 +19,10 @@ class TaskRepository
         return $user->tasks()
                     ->orderBy('created_at', 'asc')
                     ->get();
+    }
+
+    public function destroy(User $user, Task $task)
+    {
+        return $user->id === $task->user_id;
     }
 }
