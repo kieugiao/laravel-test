@@ -30,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         //
     }
 
-    public function destroy(Request $request, Task $task)
+    /*public function destroy(Request $request, Task $task)
     {
         $this->authorize('destroy', $task);
 
@@ -38,5 +38,5 @@ class AuthServiceProvider extends ServiceProvider
         $task->delete();
 
         return redirect('/tasks');
-    }
+    }*/
 }
