@@ -14,6 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Task' => 'App\Policies\TaskPolicy'
     ];
 
     /**
@@ -27,5 +28,15 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies($gate);
 
         //
+    }
+
+    public function destroy(Request $request, Task $task)
+    {
+        $this->authorize('destroy', $task);
+
+        // Delete The Task...
+        $task->delete();
+
+        return redirect('/tasks');
     }
 }
